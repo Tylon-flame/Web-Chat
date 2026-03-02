@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "server": "nodemon BACKEND/server.js"
+    "server": "nodemon BACKEND/server.js",
+    "dev": "npm run dev --prefix FRONTEND"
   },
   "type": "module",
   "keywords": [],
@@ -19,5 +20,6 @@
     "mongoose": "^9.2.2",
     "nodemon": "^3.1.14",
     "socket.io": "^4.8.3"
-  }
+  },
+  "devDependencies": {}
 }
