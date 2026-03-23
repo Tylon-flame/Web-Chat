@@ -1,43 +1,100 @@
+import { useState } from 'react'
 import GenderCheckbox from './GenderCheckbox'
+import { Link } from 'react-router-dom'
+import useSignup from '../../hooks/useSignup'
 
 const SignUp = () => {
+  const [inputs, setInputs] = useState({
+    fullName: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+    gender: ""
+  })
+
+  const { loading, signup } = useSignup();
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setInputs({ ...inputs, [name]: value });
+  };
+
+  const handleGenderChange = (gender) => {
+    setInputs({ ...inputs, gender })
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await signup(inputs);
+  }
+
   return (
     <div className='flex flex-col items-center justify-center min-w-96 mx-auto'>
       <div className='w-full p-6 rounded-md shadow-md bg-gray-400/10 bg-clip-padding backdrop-blur-md border-1 border-gray-600 background-opacity-0'>
         <h1 className='text-3xl font-bold mb-2 text-center text-yellow-200'>Sign Up <span className='text-yellow-400'>ChatApp</span></h1>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div>
             <label className='label p-2'>
               <span className='text-base label-text text-black font-bold'>FULL NAME</span>
             </label>
-            <input type="text" placeholder='Name' className='w-full input input-bordered h-9' />
+            <input
+              type="text"
+              placeholder='Name'
+              className='w-full input input-bordered h-9'
+              name="fullName"
+              value={inputs.fullName}
+              onChange={handleInputChange}
+            />
           </div>
           <div>
             <label className='label p-2'>
               <span className='text-base label-text text-black font-bold'>USERNAME</span>
             </label>
-            <input type="text" placeholder='Username' className='w-full input input-bordered h-9' />
+            <input
+              type="text"
+              placeholder='Username'
+              className='w-full input input-bordered h-9'
+              name="username"
+              value={inputs.username}
+              onChange={handleInputChange}
+            />
           </div>
           <div>
             <label className='label p-2'>
               <span className='text-base label-text text-black font-bold'>PASSWORD</span>
             </label>
-            <input type="password" placeholder='Password' className='w-full input input-bordered h-9' />
-
+            <input
+              type="password"
+              placeholder='Password'
+              className='w-full input input-bordered h-9'
+              name="password"
+              value={inputs.password}
+              onChange={handleInputChange}
+            />
           </div>
           <div>
             <label className='label p-2'>
               <span className='text-base label-text text-black font-bold'>CONFIRM PASSWORD</span>
             </label>
-            <input type="password" placeholder='Confirm Password' className='w-full input input-bordered h-9' />
+            <input
+              type="password"
+              placeholder='Confirm Password'
+              className='w-full input input-bordered h-9'
+              name="confirmPassword"
+              value={inputs.confirmPassword}
+              onChange={handleInputChange}
+            />
 
-            <GenderCheckbox />
+            <GenderCheckbox onCheckboxChange={handleGenderChange} selectedGender={inputs.gender} />
           </div>
-          <a href="#" className='text-sm hover:text-pink-200 mt-4 inline-block text-black font-bold'>
+          <Link to="/login" className='text-sm hover:text-pink-200 mt-4 inline-block text-black font-bold'>
             {`Already have an account?`}
-          </a>
+          </Link>
           <div>
-            <button className='btn btn-block btn-md mt-2 border border-slate-700 hover:border-slate-500'>Sign Up</button>
+            <button className='btn btn-block btn-md mt-2 border border-slate-700 hover:border-slate-500'
+              disabled={loading}
+            >
+              {loading ? <span className='loading loading-spinner'></span> : "Sign Up"}
+            </button>
           </div>
         </form>
       </div>
