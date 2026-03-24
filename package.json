@@ -7,7 +7,7 @@
     "server": "nodemon BACKEND/server.js",
     "dev": "npm run dev --prefix FRONTEND",
     "start": "node BACKEND/server.js",
-    "build": "npm install --prefix FRONTEND && npm install --prefix BACKEND && npm run build --prefix FRONTEND"
+    "build": "npm install && npm install --prefix FRONTEND && npm run build --prefix FRONTEND"
   },
   "type": "module",
   "keywords": [],
@@ -21,7 +21,6 @@
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.2.2",
     "nodemon": "^3.1.14",
-    "socket.io": "^4.8.3",
-    "zustand": "^5.0.11"
+    "socket.io": "^4.8.3"
   }
 }
