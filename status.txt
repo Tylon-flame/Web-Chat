@@ -1,0 +1,19 @@
+ M BACKEND/controllers/message.controller.js
+ M BACKEND/server.js
+ M FRONTEND/package-lock.json
+ M FRONTEND/package.json
+ M FRONTEND/src/components/messages/Message.jsx
+ M FRONTEND/src/components/messages/MessageContainer.jsx
+ M FRONTEND/src/components/messages/Messages.jsx
+ M FRONTEND/src/components/sidebar/Conversation.jsx
+ M FRONTEND/src/index.css
+ M FRONTEND/src/main.jsx
+ M FRONTEND/vite.config.js
+ D git_status_output.txt
+ D git_status_short.txt
+ D temp_grep_results.txt
+?? BACKEND/socket/
+?? FRONTEND/src/assets/notification.mp3
+?? FRONTEND/src/context/SocketContext.jsx
+?? FRONTEND/src/hooks/useListenMessages.js
+?? status.txt
